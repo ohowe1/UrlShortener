@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static "style.css" %}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <ul id="navigation-bar">
+            <li class="navitem"><a href="#">Home</a></li>
+            <li class="navitem"><a href="#">News</a></li>
+            <li class="navitem"><a href="#">Contact</a></li>
+            <li class="navitem"><a href="#">About</a></li>
+            <li class="navitem navright"><a href="#">Signout</a></li>
+        </ul>
+
+        <div id="content">{% block content %}{% endblock %}</div>
+        <footer id="footer">
+            <p>{{ name }}</p>
+            <p>(c) 2020 Oliver Howe. All Rights Reserved</p>
+        </footer>
+    </body>
+</html>
