@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from manage.models import Link
+from .models import Link
 
 
 # Create your views here.
@@ -12,4 +12,4 @@ def links(request, id):
     print(result)
     result.clicks += 1
     result.save()
-    return HttpResponseRedirect(result.link)
+    return HttpResponseRedirect(result.url)
