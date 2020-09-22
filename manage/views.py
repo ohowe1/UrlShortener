@@ -5,3 +5,6 @@ from django.conf import settings
 def index(request):
     context = {'name': settings.NAME}
     return render(request, "home.html", context)
+
+def fourofour(request, err):
+    return render(request, "manage404.html")

@@ -4,4 +4,7 @@ from django.db import models
 class Link(models.Model):
     link = models.URLField()
     name = models.TextField(unique=True)
-    clicks = models.IntegerField()
+    clicks = models.IntegerField(default=0, auto_created=True)
+
+    def __str__(self):
+        return self.name + " -> " + self.link
