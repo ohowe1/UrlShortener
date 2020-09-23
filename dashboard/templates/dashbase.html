@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/manage.css' %}">
+{% endblock head %}
+
+
+{% block body %}
+    <div id="navigation-bar">
+        <div class="navitem">
+            <a href="#">Link 1</a>
+        </div>
+        <div class="navitem">
+            <a href="#">Link 2</a>
+        </div>
+        <div class="navitem">
+            <a href="#">Link 3</a>
+        </div>
+
+        <div class="navitem navright">
+            <a href="#">Signout</a>
+        </div>
+    </div>
+    {% block content %}
+        
+    {% endblock content %}
+{% endblock body %}
+    
+    
