@@ -1,0 +1,23 @@
+#load {
+    fill: #ddd;
+    stroke: #0088ff;
+    stroke-width: 50;
+    stroke-dasharray: 0 158;
+    transition: stroke-dasharray 4s linear;
+}
+
+#loadfore {
+    fill: white;
+}
+
+#loadimg {
+    transform: rotate(90deg);
+}
+
+#loadsvg {
+    margin: 0 auto;
+    background: #ddd;
+    transform: rotate(-90deg);
+    border-radius: 50%;
+    display: block;
+}

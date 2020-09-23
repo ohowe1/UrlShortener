@@ -1,0 +1,28 @@
+#navigation-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f3f3f3;
+}
+
+.navitem {
+    float: left;
+}
+
+.navitem a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navright {
+    float: right;
+}
+
+.navitem a:hover:not(.active) {
+    background-color:#666;
+    color: #f3f3f3;
+}
