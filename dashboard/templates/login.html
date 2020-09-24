@@ -1,0 +1,35 @@
+{% extends 'dashbase.html' %} {% block content %}
+
+<form
+    class="bg-light p-5 rounded w-100 mt-5 mx-auto"
+    method="POST"
+    style="max-width: 800px"
+>
+    <h1 class="text-center">
+        Login
+    </h1>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="username" class="d-sm-block d-none">Username</label>
+        <input
+            placeholder="Username"
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+        />
+    </div>
+    <div class="form-group">
+        <label for="pass" class="d-sm-block d-none">Password</label>
+        <input
+            placeholder="Password"
+            type="password"
+            class="form-control"
+            id="pass"
+            name="password"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+</form>
+
+{% endblock content %}
