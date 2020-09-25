@@ -1,6 +1,28 @@
-{% extends 'dashbase.html' %}
+{% extends 'dashbase.html' %} {% block content %}
+<div class="text-center container-fluid mx-0 mt-3">
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                {% for link in links %}
+                <li class="list-group-item text-left">
+                    <p class="align-middle d-inline m-0">
+                        {{ link.name }} -> {{ link.url }}<a
+                            class="btn btn-info float-right"
+                            href="{% url 'editurl' link.name %}"
+                        >
+                            Edit
+                        </a>
+                    </p>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'createurl' %}" class="btn btn-outline-primary mt-2 float-left">Create new link</a>
+        </div>
+        <div class="col-6">
+            <!-- TODO Make use analytics -->
+            <h2>Analytics will go here</h2>
+        </div>
+    </div>
+</div>
 
-{% block content %}
-    Test213
 {% endblock content %}
-    

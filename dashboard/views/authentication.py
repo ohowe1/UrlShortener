@@ -1,25 +1,8 @@
-from django.shortcuts import render
-from django.urls import reverse, resolve
-from django.conf import settings
-from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
-from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect, HttpRequest, HttpResponse
+from django.urls import reverse
 from django.contrib.auth import login, logout, authenticate
-
-# Create your views here.
-
-
-def generatecontext(request: HttpRequest):
-    return {
-        'name': settings.NAME,
-        'logged': request.user.is_authenticated
-    }
-
-
-def index(request: HttpRequest):
-    context = generatecontext(request)
-    if not context['logged']:
-        return forward_to_must_login(request)
-    return render(request, 'dashindex.html', context)
+from django.shortcuts import render
+from .util import *
 
 def login_view(request: HttpRequest):
     context = generatecontext(request)
@@ -54,7 +37,7 @@ def login_view(request: HttpRequest):
             context['alert'] = alert
             del request.session['loginpagealert']
     return render(request, 'login.html', context)
-    
+
 
 def logout_view(request: HttpRequest):
     if request.POST:
@@ -64,13 +47,4 @@ def logout_view(request: HttpRequest):
             'text': 'Logged out'
         }
         return HttpResponseRedirect(reverse('login'))
-    return HttpResponse("You can only POST this page. We don't want it preloaded! 🤦‍♂️")
-
-
-
-def forward_to_must_login(request: HttpRequest):
-    request.session['loginpagealert'] = {
-        'type': 'danger',
-        'text': 'You must be logged in to do that!'
-    }
-    return HttpResponseRedirect(reverse('login'))
+    return HttpResponse("You can only POST this page. We don't want it preloaded!")
