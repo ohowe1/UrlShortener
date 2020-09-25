@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Link(models.Model):
     url = models.URLField()
-    name = models.TextField(unique=True)
+    name = models.SlugField(unique=True)
     instant_redirect = models.BooleanField(default=False)
 
     def __str__(self):

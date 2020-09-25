@@ -1,0 +1,63 @@
+{% extends 'dashbase.html' %} {% block content %}
+<form method="post" class="w-50">
+    {% if link %}
+    <h1>Edit: {{ link.name }}</h1>
+    {% else %}
+    <h1>Create: New link</h1>
+    {% endif %} {% csrf_token %}
+    <div class="form-group">
+        <label for="username" class="d-sm-block d-none"
+            >Name (Spaces will be replaced with underscores)</label
+        >
+        <input
+            placeholder="Name"
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            value="{{ link.name | default:'' }}"
+            required
+        />
+    </div>
+    <div class="form-group">
+        <label for="pass" class="d-sm-block d-none">URL</label>
+        <input
+            placeholder="https://example.com"
+            type="url"
+            class="form-control"
+            id="urlform"
+            name="url"
+            value="{{ link.url | default:'' }}"
+            required
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    {% if link %}
+    <button
+        class="btn btn-danger float-right d-inline-block"
+        id="delete"
+        type="button"
+    >
+        Delete link
+    </button>
+    {% endif %}
+</form>
+
+{% if link %}
+<form action="{% url 'deleteurl' %}" id="deleteform" method="POST">
+    {% csrf_token %}
+    <input hidden value="{{ link.name }}" readonly name="urlname" />
+</form>
+{% endif %}
+<script>
+    $("#name").change(() => {
+        $("#name").val($("#name").val().replaceAll(" ", "_"));
+    });
+    $("#delete").click(() => {
+        let confimed = confirm("Are you sure?");
+        if (confimed) {
+            $("#deleteform").submit();
+        }
+    });
+</script>
+{% endblock content %}
