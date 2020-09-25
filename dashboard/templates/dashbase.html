@@ -25,12 +25,27 @@
             </li>
         </ul>
         <div class="my-2 my-lg-0">
+            {% if logged %}
+            <form method="POST" action="{% url 'logout' %}">
+                <input type="hidden" name="_" value="_" />
+                {% csrf_token %}
+                <button
+                    type="submit"
+                    name="submit_param"
+                    value="submit_value"
+                    class="btn btn-outline-info my-2 my-sm-0"
+                >
+                    Log out
+                </button>
+            </form>
+            {% else %}
             <a
                 class="btn btn-outline-info my-2 my-sm-0"
                 type="submit"
                 href="{% url 'login' %}"
-                >{% if logged %} Log out {% else %} Log in {% endif %}</a
+                >Log in</a
             >
+            {% endif %}
         </div>
     </div>
 </nav>
