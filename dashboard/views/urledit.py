@@ -53,6 +53,11 @@ def edit_url(request: HttpRequest, name: str, context: dict):
     if request.POST:
         formname = request.POST['name']
         url = request.POST['url']
+        try:
+            request.POST['instant']
+            instant = True
+        except:
+            instant = False
 
         nullcheck = assure_formname_and_url_not_null(
             formname, url, request, context)
@@ -73,10 +78,11 @@ def edit_url(request: HttpRequest, name: str, context: dict):
             return render(request, 'dashlink.html', context)
         try:
             if link is None:
-                link = Link(url=url, name=formname)
+                link = Link(url=url, name=formname, instant_redirect=instant)
             else:
                 link.url = url
                 link.name = formname
+                link.instant_redirect = instant
             link.save()
         except Exception as e:
             print(e)
