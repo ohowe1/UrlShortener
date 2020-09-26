@@ -88,7 +88,7 @@ def edit_url(request: HttpRequest, name: str, context: dict):
             print(e)
             context = dangeralert(context, 'An error has occured!')
             return render(request, 'dashlink.html', context)
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('dashboard:index'))
     return HttpResponse("You can only POST this page.")
 
 
@@ -116,4 +116,4 @@ def delete_url(request: HttpRequest):
                 'type': 'danger',
                 'text': 'An error has occured'
             }
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('dashboard:index'))

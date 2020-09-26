@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="text-center w-100">
+        <h1 class="pb-2">
+            Welcome to {{ name }}
+        </h1>
+        <a href="{% url 'dashboard:login' %}" class="btn btn-primary">Login</a>
+    </div>
+{% endblock body %}
+    

@@ -7,7 +7,7 @@ from .util import *
 def login_view(request: HttpRequest):
     context = generatecontext(request)
     if context['logged']:
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('dashboard:index'))
     if request.POST:
         username = request.POST['username']
         password = request.POST['password']
@@ -25,7 +25,7 @@ def login_view(request: HttpRequest):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('dashboard:index'))
             else:
                 context['alert'] = {
                     'type': 'danger',
@@ -46,5 +46,5 @@ def logout_view(request: HttpRequest):
             'type': 'success',
             'text': 'Logged out'
         }
-        return HttpResponseRedirect(reverse('login'))
+        return HttpResponseRedirect(reverse('dashboard:login'))
     return HttpResponse("You can only POST this page. We don't want it preloaded!")

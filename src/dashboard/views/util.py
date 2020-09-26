@@ -8,7 +8,7 @@ def forward_to_must_login(request: HttpRequest):
         'type': 'danger',
         'text': 'You must be logged in to do that!'
     }
-    return HttpResponseRedirect(reverse('login'))
+    return HttpResponseRedirect(reverse('dashboard:login'))
 
 
 def generatecontext(request: HttpRequest):

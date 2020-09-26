@@ -27,7 +27,7 @@
     <a href="{{ url }}">Click here to go to your application</a>
 </noscript>
 <script>
-    document.getElementById("load").style.strokeDasharray = 158;
+    $("#load").css("strokeDasharray", 158);
     redirect("{{ url }}", 4);
 </script>
 
