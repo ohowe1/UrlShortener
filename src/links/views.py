@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .models import Link, Click
 from django.conf import settings
@@ -20,4 +20,4 @@ def links(request, id):
     if not result.instant_redirect:
         context["url"] = result.url
         return render(request, 'noninstant.html', context)
-    return HttpResponseRedirect(result.url)
+    return redirect(result.url)

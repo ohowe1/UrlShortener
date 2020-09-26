@@ -25,7 +25,10 @@ SECRET_KEY = '57xjs8%_#98&f%$nu4n3sc33c9ah8580q($_fs8x79x_tl_=i('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'testserver',
+    '127.0.0.1'
+]
 
 
 # Application definition
