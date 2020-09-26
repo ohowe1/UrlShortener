@@ -21,7 +21,7 @@
             crossorigin="anonymous"
         ></script>
         <script src="{% static 'js/util.js' %}"></script>
-        <title>{% block title %}{% endblock %}</title>
+        <title>{{ name }}: {% block title %}{% endblock %}</title>
         {% block head %} {% endblock head %}
     </head>
     <body>

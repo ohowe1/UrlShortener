@@ -1,4 +1,9 @@
-{% extends 'dashbase.html' %} {% block content %}
+{% extends 'dashbase.html' %}
+
+    {% block title %}
+        {{ link.name | default:'New link' }}
+    {% endblock title %}
+{% block content %}
 <form method="post" class="w-50">
     {% if link %}
     <h1>Edit: {{ link.name }}</h1>
